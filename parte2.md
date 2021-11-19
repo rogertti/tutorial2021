@@ -362,6 +362,19 @@ Em vez de termos o JSON assim:
 
 Queremos um JSON assim, onde a propriedade `coordenador` de cada curso contenha um **objeto** com os dados do professor.
 
+PROFESSOR, FALTOU EXPLICAR QUE O ARRAY PRECISA SER MODIFICADO
+
+array(
+    "id" => 1,
+    "nome" => "Tecnologia em Sistemas para Internet",
+    "semestres" => 6,
+    "coordenador" => array(
+        "id" => 5,
+        "nome" => "Rafael Speroni"
+    )
+)
+...
+
 ```javascript
 [
 ...
@@ -409,7 +422,7 @@ function getCursos(){
     //percorre cada posição do array
     for($i=0; $i<sizeof($cursos); $i++){
         //busca o professor correspondente, recebe o Array
-        $coordenador = getProfessor($cursos[$i]['coordenador']);
+        $coordenador = getProfessor($cursos[$i]['coordenador']['id']);
         //substitui o valor da posição coordenador pelo Array
         $cursos[$i]['coordenador'] = $coordenador;
     }    

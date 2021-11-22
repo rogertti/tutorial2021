@@ -892,7 +892,6 @@ Vamos criar um arquivo `api/dadosdisciplinas.php`:
 
 ```php
 <?php
-<?php
 include_once('../dados.php');
 
 if(isset($_GET['id_curso'])){

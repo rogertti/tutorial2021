@@ -1063,8 +1063,16 @@ function linksSemestres(id_curso, semestres){
     li.setAttribute("data-bs-toggle", "tab")
     //acrescenta um atributo class em <a>: <a class="nav-link active"> - são classes do Bootstrap (active indica que essa aba vem selecionada)
     a.setAttribute("class", "nav-link active");
+    
     //cria um atributo onclick, para invocar a função que busca as disciplinas
-    li.setAttribute("onclick", "listaDisciplinas("+id_curso+", 0)")
+    //professor, essa linha faz com que a função listaDisciplinas fique como undefined.
+    //Para corrigir usei o addEventListener
+    
+    //li.setAttribute("onclick", "listaDisciplinas("+id_curso+", 0)");
+    li.addEventListener('click', function() {
+      listaDisciplinas(idcurso, 0);
+    });
+
     //cria um nó de texto, contento a palavra "Todos"
     let txt = document.createTextNode("Todos");
     //acrescenta o nó de texto ao link <a>
@@ -1081,9 +1089,15 @@ function linksSemestres(id_curso, semestres){
         let txt = document.createTextNode(i + "o. Semestre");
         li.setAttribute('class', 'nav-item');
         a.setAttribute("class", "nav-link")
-        a.setAttribute("data-bs-toggle", "tab")
+        a.setAttribute("data-bs-toggle", "tab");
+
         //adiciona o atributo onclick, para invocar a função que busca as disciplinas
-        li.setAttribute("onclick", "listaDisciplinas("+id_curso+", "+ i +")");
+        //Mesmo caso aqui:
+        //li.setAttribute("onclick", "listaDisciplinas("+id_curso+", "+ i +")");
+        li.addEventListener('click', () => {
+          listaDisciplinas(idcurso, i);
+        });
+
         a.appendChild(txt); 
         li.appendChild(a);
         ul.appendChild(li);           
